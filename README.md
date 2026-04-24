@@ -353,5 +353,5 @@ I'm being explicit about this for two reasons. First, AI-assisted writing is bec
 
 If you adopt this pattern and it evolves in your project, I'd love to hear about it. Every team's version will look slightly different, and the differences are the interesting part.
 
-— *[Your name here]*
+— *[Sakura]*
 *With Claude (Anthropic), 2026*
