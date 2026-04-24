@@ -1,0 +1,199 @@
+<!--
+  HANDOVER.md — Session-to-Session Relay Template
+  
+  This file is the relay baton between AI sessions. It captures:
+    - What just happened (close blocks, in reverse chronological order)
+    - What to do next (the note at the top)
+    - What to avoid (the trap list, accumulating across sessions)
+  
+  Three discipline rules:
+    1. Update this file LAST in any session — after all work is committed
+    2. Read this file FIRST in any new session — before exploring code
+    3. Trap list grows over time — never delete entries, only add
+  
+  Delete this comment block before committing.
+-->
+
+# [Project Name] — Session Handover
+
+> **First thing in any new session: read this file, then [CLAUDE.md](./CLAUDE.md).**
+>
+> If you're tempted to skip ahead and "just look at the code," don't. The 30 seconds you save will cost an hour later.
+
+<!--
+  Optional warning block for sub-project HANDOVERs in monorepos:
+  
+  > ⚠️ This is the [tool/feature/subproject] HANDOVER. The platform-level HANDOVER
+  > at `docs/HANDOVER.md` may be stale relative to platform-level work.
+  > For platform context: `git show main:docs/HANDOVER.md | head -70`
+-->
+
+---
+
+## 📝 Note to the next session ([prev session #] → [current session #])
+
+Hi, I'm the agent from session [N].
+
+### 🟢 How to start (don't overthink it, just do these in order)
+
+1. Verify environment: `[command, e.g. `git rev-parse --show-toplevel`]`
+2. Check git log: `git log --oneline -[N]` — top should be [expected commit description]
+3. Install if needed: `[e.g. `pnpm install`]`
+4. Read the session [N] close block below for full context
+5. Open [path to current spec/issue] — that's your work
+6. Start: [first concrete action, e.g. "RED → GREEN → /simplify → commit"]
+
+### 💡 Lessons from this session
+
+<!--
+  What you learned that the next session should know but isn't a "trap" yet.
+  Patterns, mental models, surprising-but-not-broken discoveries.
+-->
+
+- [Lesson 1 — e.g. "File-backed integration tests caught a bug in-memory tests missed"]
+- [Lesson 2 — e.g. "Refactor to a record type when a function takes 3+ positional args"]
+- [Lesson 3]
+
+### ⚠️ Traps (carrying forward + [N] new this session)
+
+<!--
+  This list ACCUMULATES. Never delete entries — only add new ones at the bottom.
+  Mark new entries with [new] so the next session can see what changed.
+  
+  After 30 sessions, this becomes the most valuable artifact in the project:
+  a curated, battle-tested anti-pattern catalog.
+-->
+
+1. [Existing trap from session X — e.g. "`git add X && git commit` chain triggers the pre-commit hook in a way that loses staged files. Always do them as two separate commands."]
+2. [Existing trap from session Y]
+3. [Existing trap from session Z]
+4. **[new]** [Trap discovered this session]
+5. **[new]** [Another trap discovered this session]
+
+### 🎯 What you're building this session
+
+[One paragraph — what's the slice you're delivering?]
+
+Concrete deliverables:
+- [Deliverable 1]
+- [Deliverable 2]
+- [Deliverable 3]
+
+[Optional: estimated cycles or time]
+
+### ❓ Uncertain / needs alignment
+
+<!--
+  Things this session decided without full confidence.
+  Surface them so the next session (or the human) can audit.
+  
+  This section is the antidote to AI's biggest hidden failure mode:
+  making confident decisions on ambiguous input without flagging it.
+-->
+
+- [Decision 1 made on assumption — please verify before relying on it]
+- [Question I couldn't resolve — needs human input]
+
+Good luck.
+
+— session [N] agent
+
+---
+
+## Session [N] close — [date] — [one-line summary, e.g. "Slice S2 ✅ delivered"]
+
+### Current state
+
+- **Worktree / location**: `[absolute path or describe]`
+- **Branch**: `[branch name]`
+- **HEAD commit**: `[short SHA]` ([one-line description])
+- **Base** (start of session): `[short SHA]`
+- **Code stats**: [e.g. "+150 lines business code, +80 lines tests"]
+- **Test status**: [e.g. "247/247 passing"]
+- **Verification (`[your check command]`)**: [✅ green / 🟡 partial / 🔴 broken]
+
+### Commits this session
+
+| Commit | Cycle | Type | What it does |
+|---|---|---|---|
+| `[sha]` | 1 | feat | [description] |
+| `[sha]` | 2 | feat | [description] |
+| `[sha]` | 3 | refactor | [description] |
+| `[sha]` | — | docs | [description, e.g. this HANDOVER update] |
+
+### Acceptance progress
+
+What this slice was supposed to deliver:
+
+- [x] [Item 1 — done]
+- [x] [Item 2 — done]
+- [ ] [Item 3 — deferred / pending]
+- [ ] [Item 4 — pending]
+
+### Lessons / new discipline (added this session)
+
+<!--
+  More detailed than the "💡 Lessons" in the note above —
+  this is for posterity. The note above is the executive summary.
+-->
+
+- [Lesson 1 — full context, including why it matters]
+- [Lesson 2]
+- [Pattern: when [situation], do [action], because [reason]]
+
+### Entry checklist for next session
+
+- [ ] Verify you're in the right environment: `[command]`
+- [ ] `git log --oneline -[N]` shows expected top commit
+- [ ] Install dependencies if needed
+- [ ] Read this close block + [CLAUDE.md](./CLAUDE.md) + [next spec]
+- [ ] Confirm `[verification command]` is green before starting
+- [ ] Estimate: [N] cycles for next slice
+
+### Future merge / deployment notes
+
+<!--
+  If this work lives in a feature branch and will eventually merge to main,
+  capture anything the merging session needs to know:
+  - Conflict files to watch
+  - Migration steps required
+  - Sequencing constraints
+  - Anything that won't survive a naive merge
+-->
+
+[Notes about merging this work back, if applicable.]
+
+---
+
+## Session [N-1] close — [date]
+
+<!--
+  Older session blocks live below in reverse chronological order.
+  
+  When this file gets long enough that you can't easily scroll to find things,
+  archive older blocks to a separate file:
+  
+    docs/sessions/session-001-close.md
+    docs/sessions/session-002-close.md
+    ...
+  
+  And keep only the last 2-3 close blocks here.
+  
+  Rule of thumb: when ctrl+F is faster than scroll, archive.
+-->
+
+[Previous session close block here, in the same format as above.]
+
+---
+
+## Session [N-2] close — [date]
+
+[Even older session close block here.]
+
+---
+
+<!--
+  Template by [your name], adapted from the HANDOVER pattern.
+  Original: https://github.com/[your-handle]/handover-pattern
+  Delete this footer if you want.
+-->
